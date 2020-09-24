@@ -39,10 +39,6 @@ class BookRepository(private val context: Context) {
         }
     }
 
-    private fun deleteDbData() {
-
-    }
-
     fun fetch(): LiveData<List<BookWithAuthors>> {
         val data = bookWithAuthorDao.getBookWithAuthors()
         data.value?.forEach {
