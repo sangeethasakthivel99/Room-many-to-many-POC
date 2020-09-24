@@ -17,12 +17,12 @@ data class AuthorEntity (
 )
 
 @Entity(primaryKeys = ["bookId","authorId"])
-data class BookWithAuthorEntity (
+data class BookAndAuthorEntity (
     val bookId: Long,
     val authorId: Long
 )
 
-data class CourseInstructorPair(
+data class BookWithAuthors(
     @Embedded
     var book: BookEntity,
 
@@ -31,7 +31,7 @@ data class CourseInstructorPair(
         entity = AuthorEntity::class,
         entityColumn = "authorId",
         associateBy = Junction(
-            value = BookWithAuthorEntity::class,
+            value = BookAndAuthorEntity::class,
             parentColumn = "bookId",
             entityColumn = "authorId"
         )

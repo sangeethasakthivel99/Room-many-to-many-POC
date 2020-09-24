@@ -6,12 +6,12 @@ import androidx.room.*
 interface BookWithAuthorDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(bookWithAuthor: BookWithAuthorEntity)
+    fun insert(bookWithAuthor: BookAndAuthorEntity)
 
     @Transaction
     @Query("SELECT * FROM BookEntity")
-    fun getCourses(): List<CourseInstructorPair>
+    fun getBookWithAuthors(): List<BookWithAuthors>
 
     @Delete
-    fun delete(bookWithAuthor: BookWithAuthorEntity)
+    fun delete(bookWithAuthor: BookAndAuthorEntity)
 }

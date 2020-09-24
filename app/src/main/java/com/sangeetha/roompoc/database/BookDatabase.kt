@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
     entities = [
         BookEntity::class,
         AuthorEntity::class,
-        BookWithAuthorEntity::class
+        BookAndAuthorEntity::class
     ]
 )
 abstract class BookDatabase : RoomDatabase() {

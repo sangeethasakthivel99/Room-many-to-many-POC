@@ -7,8 +7,8 @@ import androidx.room.OnConflictStrategy
 interface AuthorDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertBook(book: BookEntity)
+    fun insert(author: AuthorEntity)
 
     @Delete
-    fun deleteBook(book: BookEntity)
+    fun deleteBook(author: AuthorEntity)
 }
