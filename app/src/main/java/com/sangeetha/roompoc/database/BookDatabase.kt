@@ -27,7 +27,7 @@ abstract class BookDatabase : RoomDatabase() {
                 INSTANCE = Room.databaseBuilder(
                     context.applicationContext,
                     BookDatabase::class.java, "book_database"
-                ).build()
+                ).allowMainThreadQueries().build()
             }
             return INSTANCE
         }

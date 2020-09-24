@@ -2,8 +2,10 @@ package com.sangeetha.roompoc.repository
 
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LiveData
 import com.sangeetha.roompoc.database.BookAndAuthorEntity
 import com.sangeetha.roompoc.database.BookDatabase
+import com.sangeetha.roompoc.database.BookWithAuthors
 import com.sangeetha.roompoc.database.response
 
 class BookRepository(private val context: Context) {
@@ -16,7 +18,9 @@ class BookRepository(private val context: Context) {
 
     fun insertToDB() {
         response.books?.forEach{
-            it.books?.let { book -> bookDao.insertBook(book) }
+            it.books?.let { book ->
+                bookDao.insertBook(book)
+            }
         }
         response.authors?.forEach {
             authorDao.insert(it)
@@ -35,10 +39,15 @@ class BookRepository(private val context: Context) {
         }
     }
 
-    fun fetch() {
+    private fun deleteDbData() {
+
+    }
+
+    fun fetch(): LiveData<List<BookWithAuthors>> {
         val data = bookWithAuthorDao.getBookWithAuthors()
-        data.forEach {
+        data.value?.forEach {
             Log.d("BookWithAuthors", it.toString())
         }
+        return data
     }
 }

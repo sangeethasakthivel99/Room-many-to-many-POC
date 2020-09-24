@@ -50,4 +50,7 @@ dependencies {
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
+    //Recycler view
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
 }
